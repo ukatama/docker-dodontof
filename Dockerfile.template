@@ -3,14 +3,30 @@ MAINTAINER dev.ukatama@gmail.com
 
 RUN apk add --update \
     ruby \
-    ruby-fcgi \
     ruby-irb \
     ruby-json \
     ruby-rdoc \
     spawn-fcgi \
     wget \
-    zip \
-    && rm -rf /var/cache/apk/*
+    zip
+
+RUN apk add \
+    make \
+    gcc \
+    fcgi-dev \
+    libc-dev \
+    ruby-dev
+
+RUN apk add libc-dev fcgi-dev make
+RUN gem install fcgi
+RUN apk del \
+    make \
+    gcc \
+    fcgi-dev \
+    libc-dev \
+    ruby-dev
+
+RUN rm -rf /var/cache/apk/*
 
 WORKDIR /usr/local/src
 RUN wget http://www.dodontof.com/DodontoF/DodontoF_<DODONTOF_VERSION>.zip -q -O DodontoF.zip \
