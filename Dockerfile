@@ -15,7 +15,10 @@ RUN apk add \
     gcc \
     fcgi-dev \
     libc-dev \
-    ruby-dev
+    ruby-dev \
+    ca-certificates
+
+RUN update-ca-certificates
 
 RUN apk add libc-dev fcgi-dev make
 RUN gem install fcgi
