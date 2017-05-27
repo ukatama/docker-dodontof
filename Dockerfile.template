@@ -48,4 +48,4 @@ CMD spawn-fcgi \
         -s /var/run/dodontof.sock \
         -d /usr/local/src/DodontoF_WebSet/public_html/DodontoF \
         -f /usr/local/src/DodontoF_WebSet/public_html/DodontoF/dodontof-fcgi.rb \
-& h2o
+& h2o -c /etc/h2o/h2o.conf
